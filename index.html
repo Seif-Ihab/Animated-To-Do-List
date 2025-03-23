@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="A To-Do-List where you can add tasks, track your task list, and delete completed tasks" />
+    <title>To Do List</title>
+    <link rel="icon" href="imgs/logo.png" type="logo" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- Set base background and enable transition for dark/light switch -->
+
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-500">
+
+    <!-- ========== HEADER ========== -->
+    <header
+        class="w-full h-52 bg-[url(imgs/ligh-bg.avif)] bg-cover relative dark:bg-[url(imgs/dark-bg.avif)] transition-all duration-500">
+        <!-- Overlay for dimming the background -->
+        <div class="w-full h-full bg-cyan-400/50 dark:bg-black/40 absolute z-0"></div>
+
+        <!-- Logo Circle -->
+        <div
+            class="w-14 h-14 bg-cyan-400/40 dark:bg-white/50 rounded-full absolute left-4 top-4 z-10 transition-all duration-500">
+            <img src="imgs/logo-removebg.png" alt="my-logo" />
+        </div>
+
+        <!-- Title -->
+        <div class="flex justify-center items-center relative top-20 z-10">
+            <div
+                class="bg-cyan-950/60 dark:bg-white/50 text-white dark:text-gray-900 p-2.5 rounded-2xl text-4xl font-bold font-serif shadow-md transition-all duration-500">
+                To Do List
+            </div>
+        </div>
+
+        <!-- Toggle Button for Dark Mode -->
+        <div onclick="toggleDark()"
+            class="w-14 h-14 bg-cyan-950/60 dark:bg-white/50 cursor-pointer hover:scale-105 flex justify-center items-center rounded-full absolute right-4 top-4 z-10 transition-all duration-500 shadow-md">
+            <i class="fa-solid fa-moon text-white text-3xl dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden text-amber-300 text-3xl dark:block"></i>
+        </div>
+    </header>
+
+    <!-- ========== MAIN ========== -->
+    <main class="mx-auto max-w-lg flex flex-col mt-6">
+        <!-- Task Container -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl transition-all duration-500">
+            <!-- Add Task Bar -->
+            <div class="addbar flex items-center justify-between p-5 relative">
+                <div
+                    class="message hidden absolute top-[-2rem] right-[calc(1.25rem+18%)] p-2 rounded-xl bg-red-100 border border-red-400 text-red-800 dark:bg-red-900 dark:border-red-300 dark:text-red-200 text-sm font-medium shadow-md before:content-[''] before:absolute before:-bottom-4 before:right-4 before:border-8 before:border-transparent before:border-t-red-100 dark:before:border-t-red-900">
+                    <i class=" fa-solid fa-circle-exclamation text-red-600 dark:text-red-300"></i>
+                    Field is empty.
+                </div>
+                <input type="text" placeholder="Add New Task..."
+                    class="w-[80%] p-2.5 rounded-xl bg-gray-200/60 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none caret-cyan-500 text-lg transition duration-300" />
+
+                <button onclick="addToList()"
+                    class="p-2.5 rounded-xl bg-gradient-to-b from-cyan-900 to-cyan-400 dark:from-cyan-600 dark:to-cyan-300 text-white dark:text-gray-900 shadow-md transition duration-300">
+                    ADD
+                </button>
+            </div>
+
+            <!-- Divider -->
+            <hr class="w-[80%] mx-auto border-gray-300 dark:border-gray-600" />
+
+            <!-- Task Filters -->
+            <div class="flex items-center justify-around p-2.5 text-gray-800 dark:text-white font-serif text-sm">
+                <div class="flex items-center"><span id="itemsCount" class="pb-1 pr-1"></span> Items Left
+                </div>
+                <div>
+                    <span id="filterAll"
+                        class="filter-btn cursor-pointer p-1.5 rounded-lg hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 transition bg-blue-600 text-white dark:bg-blue-400">All</span>
+                    <span id="filterActive"
+                        class="filter-btn cursor-pointer p-1.5 rounded-lg hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 transition">Active</span>
+                    <span id="filterCompleted"
+                        class="filter-btn cursor-pointer p-1.5 rounded-lg hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 transition">Completed</span>
+                </div>
+                <div id="clearCompleted"
+                    class="cursor-pointer p-1.5 rounded-lg hover:bg-orange-700 hover:text-white dark:hover:bg-orange-400 transition">
+                    <i class="fa-solid fa-xmark"></i> Clear
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks will be injected here -->
+        <div id="tasksContainer"
+            class=" bg-white dark:bg-gray-800 rounded-2xl shadow-2xl transition-all duration-500 mt-5">
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer
+        class="p-4 text-center bg-gray-800 dark:bg-gray-700 text-white text-3xl transition-all duration-500 mt-8 fixed bottom-0 w-full">
+        <p class="font-mono text-sm">Created by 0=||==Seif==&gt;</p>
+    </footer>
+
+    <!-- ========== SCRIPT ========== -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
